@@ -8,6 +8,7 @@ const Conco = require('./Config.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
+// fs를 이용하여 명령어 폴더 찾는 코드 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(path.join(__dirname, 'commands'));
