@@ -33,10 +33,20 @@ const rest = new REST().setToken(token);
         console.log(`Started refreshing ${commands.length} application (/) commands.`);
 
         // The put method is used to fully refresh all commands in the guild with the current set
+        // 여기서 guildId는 채팅채널 ID가 아니라 서버 타이틀에 우클릭하면 나오는 서버 ID이다.
         const data = await rest.put(
-            Routes.applicationCommands(clientId),
+            Routes.applicationGuildCommands(clientId, guildId),
             { body: commands },
         );
+
+        //만약 특정 서버에서 쓰고싶은 명령어가 아니라 이 봇이 존재하는 어느곳이든 사용하고 싶은 경우 아래 4줄의 코드를 대신 사용하면 된다.
+        // const data = await rest.put(
+        //     Routes.applicationCommands(clientId),
+        //     { body: commands },
+        // );
+        // 핵심은 Routes.applicationGuildCommands 에서 
+        // Routes.applicationCommands로 바꾸는 것이다.
+
 
         console.log(`Successfully reloaded ${data.length} application (/) commands.`);
     } catch (error) {
