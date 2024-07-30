@@ -3,8 +3,8 @@ const path = require('node:path');
 const express = require("express");
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 
-// 요거는 Config.json의 데이터를 Conco라는 별명으로 가져오는 것이다.
-const Conco = require('./Config.json');
+// 요거는 config.json의 데이터를 Conco라는 별명으로 가져오는 것이다.
+const Conco = require('./config.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
